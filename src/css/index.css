@@ -383,6 +383,8 @@ header a {
   margin-right: 18px;
   width: 60px;
   height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .grid-card .cimg img {
   width: 100%;
@@ -580,9 +582,15 @@ footer {
     bottom: 0;
     width: 100%;
     height: auto;
+    padding: 12px;
   }
   .grid-card .comment {
     display: block;
+    height: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .grid-card .comment-wrap:hover .comment {
     height: auto;
   }
   .grid-card .comment-user {

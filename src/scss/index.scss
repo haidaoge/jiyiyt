@@ -356,6 +356,8 @@ header{
 		margin-right: 18px;
 		width: 60px;
 		height: 60px;	
+		border-radius: 50%;
+    	overflow: hidden;
 		img{
 			width: 100%;
 			height: auto;
@@ -530,19 +532,24 @@ h1,h2{
 		width: 100%;
 		margin-bottom: 30px;
 	    height: auto;
-		// padding: 0.773333rem 0.96rem; 
-		// box-shadow: 0 0 5px #ccc;
-		// border-radius: 4px;
 	}
 	.comment-wrap{
 		position: relative;
 		bottom: 0;
 		width: 100%;
 		height: auto;
+		padding: 12px;
 	}
 	.comment{
 		display: block;
 		height: auto;
+		font-size: 14px;
+    	line-height: 1.5;
+	}
+	.comment-wrap:hover{
+		.comment{
+			height: auto;
+		}
 	}
 	.comment-user{
 		position: static;
