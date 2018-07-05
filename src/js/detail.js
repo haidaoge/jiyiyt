@@ -18,7 +18,17 @@ $(function() {
         clickEvent();
         prodcShow();
         playVideo();
+        resizeEvent();
+        changeBanner();
     }());
+    //
+    function resizeEvent(){
+      $(window).on("resize", function(){
+        winH = $(window).height(), 
+        winW = $(window).width(),
+        changeBanner();
+      })
+    }
     //点击事件
     function clickEvent() {
         //产品详情
@@ -147,6 +157,16 @@ $(function() {
     	$("#gridVideo").on("click", function(){
 	        createVideo(source[0]);
     	});
+    }
+
+    function changeBanner() {
+      if(winW <= 1024){
+        $("#detailBan1").attr("src", "./images/detail/image_cell.png");
+        $("#detailBan2").attr("src", "./images/detail/image_endurance.png");
+      }else{
+        $("#detailBan1").attr("src", "./images/detail/image_cell_artwork.png");
+        $("#detailBan2").attr("src", "./images/detail/image_endurance_artwork.png");
+      }
     }
 
 })

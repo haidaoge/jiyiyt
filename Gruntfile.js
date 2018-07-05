@@ -12,7 +12,8 @@ module.exports = function(grunt) {
         files: {
           './src/css/index.css': './src/scss/index.scss',
           './src/css/detail.css': './src/scss/detail.scss',
-          './src/css/aftersale.css': './src/scss/aftersale.scss'
+          './src/css/aftersale.css': './src/scss/aftersale.scss',
+          './src/css/about.css': './src/scss/about.scss',
         }
       }
     },
@@ -28,6 +29,7 @@ module.exports = function(grunt) {
           './src/js/index.min.js': ['./src/js/index.js'],
           './src/js/detail.min.js': ['./src/js/detail.js'],
           './src/js/aftersale.min.js': ['./src/js/aftersale.js'],
+          './src/js/about.min.js': ['./src/js/about.js'],
         }
       }
     },
@@ -40,6 +42,7 @@ module.exports = function(grunt) {
                  './src/css/index.min.css': ["./src/css/index.css"],  
                  './src/css/detail.min.css': ["./src/css/detail.css"],  
                  './src/css/aftersale.min.css': ["./src/css/aftersale.css"],  
+                 './src/css/about.min.css': ["./src/css/about.css"],  
              }  
          }  
      },  
@@ -49,12 +52,12 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         // files: ['./src/js/index.js','./src/js/plugin2.js'],
-        files: ['./src/js/index.js', './src/js/detail.js', './src/js/aftersale.js'],
+        files: ['./src/js/index.js', './src/js/detail.js', './src/js/aftersale.js', './src/js/about.js'],
         // tasks: ['concat','jshint','uglify']
         tasks: ['uglify']
       },
       sass: {
-        files: ['./src/scss/index.scss', './src/scss/detail.scss', './src/scss/aftersale.scss'],
+        files: ['./src/scss/index.scss', './src/scss/detail.scss', './src/scss/aftersale.scss', './src/scss/about.scss'],
         tasks: ['sass']
       },
       // cssmin: {
@@ -69,12 +72,15 @@ module.exports = function(grunt) {
               './src/index.html',
               './src/detail.html',
               './src/aftersale.html',
+              './src/about.html',
               './src/css/index.css',
               './src/css/detial.css',
               './src/css/aftersale.css',
+              './src/css/about.css',
               './src/js/index.min.js',
               './src/js/detail.min.js',
               './src/js/aftersale.min.js',
+              './src/js/about.min.js',
           ]
       }
     },
