@@ -1,0 +1,31 @@
+{
+  "name": "mobile",
+  "version": "0.1.0",
+  "description": "\"mobile \u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Djiyi mobile websit\"",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haidaoge/jiyimobile.git"
+  },
+  "keywords": [
+    "grunt",
+    "mobile"
+  ],
+  "author": "haidaoge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haidaoge/jiyimobile/issues"
+  },
+  "homepage": "https://github.com/haidaoge/jiyimobile#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "dependencies": {}
+}
