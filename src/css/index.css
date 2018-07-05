@@ -38,11 +38,6 @@ h1, h2 {
   font-weight: normal;
 }
 
-h2 {
-  margin: 119px 0 -30px;
-  line-height: 1;
-}
-
 #backtop {
   display: none;
   position: relative;
@@ -190,7 +185,7 @@ header a {
   display: flex;
   flex-wrap: wrap;
   width: 1200px;
-  margin: 30px auto;
+  margin: 30px auto 60px;
   height: 322px;
 }
 .grid-video li {
@@ -322,7 +317,7 @@ header a {
 
 .grid-card {
   position: relative;
-  margin: 0 auto;
+  margin: -92px auto 0;
   width: 1200px;
   height: 400px;
   display: flex;
@@ -572,13 +567,27 @@ footer {
   .grid-card {
     display: block;
     width: 100%;
+    height: auto;
+    margin: 0 auto;
   }
   .grid-card li {
     width: 100%;
-    margin-bottom: 17px;
-    padding: 0.773333rem 0.96rem;
-    box-shadow: 0 0 5px #ccc;
-    border-radius: 4px;
+    margin-bottom: 30px;
+    height: auto;
+  }
+  .grid-card .comment-wrap {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+  }
+  .grid-card .comment {
+    display: block;
+    height: auto;
+  }
+  .grid-card .comment-user {
+    position: static;
+    margin-top: 20px;
   }
   .grid-card .card1, .grid-card .card2, .grid-card .card3 {
     transform: translate(0, 0);
