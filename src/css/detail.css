@@ -43,6 +43,10 @@ h1, h2 {
   font-weight: normal;
 }
 
+.tac {
+  text-align: center;
+}
+
 #backtop {
   display: none;
   position: relative;
@@ -152,8 +156,10 @@ header a {
   display: none;
 }
 
-.grid-container {
-  width: 100%;
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .jy-detail {
@@ -384,7 +390,8 @@ header a {
   line-height: 26px;
   color: #333;
 }
-.grid_info .h1 {
+
+.h1 {
   font-size: 38px;
   font-weight: 500;
   line-height: 2;
@@ -486,6 +493,37 @@ header a {
   width: 40%;
 }
 
+.container {
+  width: calc( 100% - 40px);
+  margin: 0 20px;
+}
+
+.icons-wrap {
+  padding: 20px 0;
+}
+
+.icons-box, .icons-row {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.icons-row {
+  width: 50%;
+  justify-content: space-around;
+}
+
+.icon-item {
+  width: 102px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.icon {
+  width: 70px;
+}
+
 footer {
   margin-top: 68px;
   width: 100%;
@@ -535,7 +573,7 @@ footer {
   width: 291px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   .header-wrap {
     width: 100%;
   }
@@ -633,7 +671,8 @@ footer {
     font-size: 14px;
     line-height: 1.5;
   }
-  .grid_info .h1 {
+
+  .h1 {
     margin: 15px 0;
     font-size: 30px;
   }
@@ -669,6 +708,10 @@ footer {
   }
   .banner .h2 {
     font-size: 30px;
+  }
+
+  .param-wrap {
+    padding: 25px 0;
   }
 
   .param-table {
@@ -735,6 +778,11 @@ footer {
   }
   .contact li:last-child {
     font-size: 17px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .icons-row {
+    width: 100%;
   }
 }
 

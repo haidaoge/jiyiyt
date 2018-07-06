@@ -13,7 +13,7 @@ $(function() {
         addScrollEvent();
         carousel();
         playVideo();
-        if(winW <= 1024){
+        if(winW <= 1200){
           // 移动端事件管理
           touchEvent();
           layoutMenu();
@@ -55,7 +55,7 @@ $(function() {
         //    $(val).addClass("vide-item"+(i+1));
         //  });
         // }
-        if(winW <= 1024){
+        if(winW <= 1200){
           menuisshow = true;
           menuSlide();
         }else{
@@ -132,7 +132,7 @@ $(function() {
       var source =["https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4","https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4","https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4"];
       $("#gridVideo").on("click", "li", function(){
         var index = $(this).index();
-        if(winW <= 1024){
+        if(winW <= 1200){
           // 移动端
           createVideo(source[index]);
         }else{

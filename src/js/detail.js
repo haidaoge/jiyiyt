@@ -7,7 +7,7 @@ $(function() {
         backtop = null;
     // 事件执行
     (function() {
-        if(winW <= 1024){
+        if(winW <= 1200){
           // 移动端事件管理
           touchEvent();
           layoutMenu();
@@ -160,7 +160,7 @@ $(function() {
     }
 
     function changeBanner() {
-      if(winW <= 1024){
+      if(winW <= 1200){
         $("#detailBan1").attr("src", "./images/detail/image_cell.png");
         $("#detailBan2").attr("src", "./images/detail/image_endurance.png");
       }else{

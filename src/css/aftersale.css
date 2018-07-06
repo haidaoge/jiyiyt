@@ -218,7 +218,7 @@ article dt {
   display: flex;
   margin-top: 100px;
 }
-.title h2 {
+.title .tit {
   margin-right: 129px;
   cursor: pointer;
 }
@@ -277,7 +277,7 @@ footer {
   width: 291px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   .header-wrap {
     width: 100%;
   }
@@ -319,9 +319,24 @@ footer {
     margin: 0 20px;
   }
 
+  .content-wrap {
+    transition: left 0s cubic-bezier(0.19, 0.65, 0.51, 0.93);
+  }
+
   article {
+    margin-top: 27px;
     width: 100%;
     font-size: 13px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .title .tit {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 16px;
   }
 
   footer {

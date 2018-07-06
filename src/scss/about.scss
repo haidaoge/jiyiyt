@@ -279,7 +279,7 @@ footer{
   width: 291px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
 .header-wrap{
   width: 100%;
 }
@@ -315,8 +315,16 @@ footer{
   margin: 0 20px;
 }
 article{
+  margin-top: 27px;
   width: 100%;
   font-size: 13px;
+}
+.title{
+  .tit{
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+  }
 }
 .dateline-wrap{
   font-size: 12px;

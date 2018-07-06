@@ -1,21 +1,33 @@
 $(function() {
     var winH = $(window).height(), 
         winW = $(window).width(),
+        /*监听导航栏滚动距离*/
+        scrollTop = window.pageYOffset ? window.pageYOffset : window.document.documentElement.scrollTop,
         /*移动端菜单显示标志*/
         menuisshow = false,
         /*返回顶部定时器*/
         backtop = null;
     // 事件执行
     (function() {
-        if(winW <= 1024){
+        if(winW <= 1200){
           // 移动端事件管理
           touchEvent();
           layoutMenu();
-        }else{
-          // pc端事件管理
         }
-          switchTit();
+        switchTit();
+        addScrollEvent();
     }());
+    //监听文档滚动
+    function addScrollEvent() {
+      $(window).on('scroll', function() {
+        scrollTop = window.pageYOffset ? window.pageYOffset : window.document.documentElement.scrollTop;
+        if(winW <= 1200){
+          menuisshow = true;
+          menuSlide();
+        }
+
+      });
+    }
     
     //移动端事件操作
     function touchEvent() {
@@ -42,7 +54,7 @@ $(function() {
     //菜单下拉处理
     function menuSlide() {
       if(menuisshow){
-        $("#menulist").stop().slideUp();
+        $("#menulist").stop().slideUp(200);
         $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png');
         menuisshow = false;
       }else{

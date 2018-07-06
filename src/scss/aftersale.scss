@@ -183,7 +183,7 @@ article{
 .title{
   display: flex;
   margin-top: 100px;
-  h2{
+  .tit{
     margin-right: 129px;
     cursor: pointer;
   }
@@ -236,7 +236,7 @@ footer{
   width: 291px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
 .header-wrap{
   width: 100%;
 }
@@ -271,15 +271,26 @@ footer{
   width: calc( 100% - 40px);
   margin: 0 20px;
 }
+.content-wrap{
+  transition: left 0s cubic-bezier(.19,.65,.51,.93);
+}
 article{
+  margin-top: 27px;
   width: 100%;
   font-size: 13px;
 }
 h1{
 
 }
-h2{
-
+h3{
+  font-size: 16px;
+}
+.title{
+  .tit{
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+  }
 }
 footer{
   margin-top: 28px;
