@@ -391,8 +391,7 @@ header a {
   line-height: 26px;
   color: #333;
 }
-
-.h1 {
+.grid_info .h1 {
   font-size: 38px;
   font-weight: 500;
   line-height: 2;
@@ -672,8 +671,7 @@ footer {
     font-size: 14px;
     line-height: 1.5;
   }
-
-  .h1 {
+  .grid_info .h1 {
     margin: 15px 0;
     font-size: 30px;
   }
