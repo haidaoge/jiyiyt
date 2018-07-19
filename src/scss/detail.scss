@@ -290,6 +290,9 @@ header{
 .bg-odd{
   background-color: #f0f0f0;
 }
+.grid-ban1{
+  background: url(./../images/detail/image_cell_artwork.png);
+}
 .grid_image,.grid_info_wrap{
   width: 50%;
 }
@@ -397,8 +400,8 @@ header{
     width: 100%;
   }
   .ban-info{
-    position: absolute;
-    width: 100%;
+    // position: absolute;
+    // width: 100%;
     font-size: 16px;
     line-height: 26px;
     color: #e6e6e6;
@@ -551,6 +554,10 @@ h1,h2{
   font-size: 18px;
   line-height: 56px;
 }
+.h1{
+  margin: 15px 0;
+  font-size: 30px;
+}
 .jy-detail{
   display: block;
   width: 100%;
@@ -694,5 +701,7 @@ footer{
 .icons-row{
   width: 100%;
 }
-
+.icon-item{
+  width: 93px;
+}
 }
