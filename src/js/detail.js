@@ -11,22 +11,21 @@ $(function() {
           // 移动端事件管理
           touchEvent();
           layoutMenu();
+          addVideoPlay();
         }else{
           // pc端事件管理
-          
+          hoverPlayVideo();
         }
         clickEvent();
         prodcShow();
         playVideo();
         resizeEvent();
-        changeBanner();
     }());
     //
     function resizeEvent(){
       $(window).on("resize", function(){
-        winH = $(window).height(), 
-        winW = $(window).width(),
-        changeBanner();
+        winH = $(window).height();
+        winW = $(window).width();
       })
     }
     //点击事件
@@ -64,7 +63,7 @@ $(function() {
           });
         });
     };
-    // 产品图片展示
+    // 产品图片展示，轮播
     function prodcShow() {
       var index = 0,
           total = $(".image-slider").length,
@@ -151,22 +150,35 @@ $(function() {
           }
        }
     }
+    //当ban-icon处于移动端时增加视频播放功能
+    function addVideoPlay() {
+      $(".mask").addClass("gridVideo");
+    }
     //点击、触摸播放视频
     function playVideo() {
-      var source =["http://zhiyundata.oss-cn-shenzhen.aliyuncs.com/guanwang_vido/SMOOTH_Q/xuanchuan_cn.mp4"];
-    	$("#gridVideo").on("click", function(){
-	        createVideo(source[0]);
+      var source =["./video/001.mp4", "./video/002.mp4", "./video/003.mp4", "./video/003.mp4"];
+    	$(".gridVideo").on("click", function(){
+        var index = $(".gridVideo").index($(this));
+	        createVideo(source[index]);
     	});
     }
-
-    function changeBanner() {
-      if(winW <= 1200){
-        $("#detailBan1").attr("src", "./images/detail/image_cell.png");
-        $("#detailBan2").attr("src", "./images/detail/image_endurance.png");
-      }else{
-        $("#detailBan1").attr("src", "./images/detail/image_cell_artwork.png");
-        $("#detailBan2").attr("src", "./images/detail/image_endurance_artwork.png");
-      }
+    //鼠标悬浮播放视频
+    function hoverPlayVideo() {
+      $(".mask").on('mouseenter', function() {
+        var index = $('.mask').index($(this));
+        $(".video-cover-item").eq(index).addClass('video-cover-on').siblings().removeClass('video-cover-on').addClass('video-cover-dis');
+        $(".section-bg").removeClass("section-bg-on").eq(index).addClass("section-bg-on");
+        $(".video-item").removeClass("video-item-on").eq(index).addClass("video-item-on");
+        var video = $(".video-item-on video")[0];
+        video.currentTime = 0;
+        video.play();
+      });
+      $(".mask").on('mouseleave', function() {
+        var index = $('.mask').index($(this));
+        $(".video-cover-item").removeClass('video-cover-on video-cover-dis');
+        $(".section-bg").removeClass("section-bg-on");
+        $(".video-item").removeClass("video-item-on video-cover-dis");
+      });
     }
 
 })
