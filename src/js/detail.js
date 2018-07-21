@@ -11,7 +11,7 @@ $(function() {
           // 移动端事件管理
           touchEvent();
           layoutMenu();
-          addVideoPlay();
+          mobileVidoHandle();
         }else{
           // pc端事件管理
           hoverPlayVideo();
@@ -150,9 +150,12 @@ $(function() {
           }
        }
     }
-    //当ban-icon处于移动端时增加视频播放功能
-    function addVideoPlay() {
+    //移动端视频处理
+    function mobileVidoHandle() {
       $(".mask").addClass("gridVideo");
+      $(".video-item video").each(function(i, val) {
+        val.removeAttribute('autoplay');
+      })
     }
     //点击、触摸播放视频
     function playVideo() {
