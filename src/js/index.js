@@ -130,13 +130,23 @@ $(function() {
           //添加视频取消事件
           body.addEventListener("click", removeVideo, false);
           v_wrap.addEventListener("touchmove", stopSlide, false);
-          video.addEventListener('loadeddata', function() {
-            if(video.readyState >= 3) {
-              video.play();
+          if(!isIOS()) {
+            video.addEventListener('waiting',function() {
+              video.pause();
+              loading.style.display = "block";
+            });
+            video.addEventListener('canplay',function() {
               loading.style.display = "none";
-            }
-
-          });
+                  video.play();
+            });
+          }else{
+            video.addEventListener('loadeddata', function() {
+              if(video.readyState >= 3) {
+                video.play();
+                loading.style.display = "none";
+              }
+            });
+          }
           function stopSlide(e) {
             var event = e || window.event;
             event.preventDefault();
@@ -147,6 +157,14 @@ $(function() {
             if(target.id === "videoWrap" || target.id === "cancleVideo"){
                 body.removeChild(v_wrap);
                 body.removeEventListener("click", removeVideo, false);
+            }
+          }
+          //判断是否为ios
+          function isIOS() {
+            var sUserAgent = navigator.userAgent.toLowerCase(),
+              bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            if(bIsIphoneOs) {
+              return true;
             }
           }
        }

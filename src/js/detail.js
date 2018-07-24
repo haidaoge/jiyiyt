@@ -109,16 +109,14 @@ $(function() {
       $('#menulist').removeClass('jy-pc-nav').addClass('jy-mob-nav');
     }
    //生成视频播放组件
-    function createVideo(src, poster) {
+    function createVideo(src) {
        if(src){
           var dc = document,
               video = dc.createElement("video");
           video.setAttribute("width", "100%");
           video.setAttribute("height", "100%");
           video.setAttribute("controls", "controls");
-          if(poster){
-            video.setAttribute("poster", poster);
-          };
+          video.setAttribute("autoplay", "autoplay");
           video.setAttribute("src", src);
           var v_wrap = dc.createElement("section"),
               vc = dc.createElement("div"),
@@ -143,21 +141,22 @@ $(function() {
           //添加视频取消事件
           body.addEventListener("click", removeVideo, false);
           v_wrap.addEventListener("touchmove", stopSlide, false);
-          video.addEventListener('loadeddata',function() {
-            loadedVideo(video);
-          },false);
-          video.addEventListener('waiting',function() {
-            loadedVideo(video);
-          }, false);
-          function loadedVideo(_this) {
-            _this.pause();
-            loading.style.display = "block";
-            if(_this.readyState >= 2) {
-              setTimeout(function() {
+          if(!isIOS()) {
+            video.addEventListener('waiting',function() {
+              video.pause();
+              loading.style.display = "block";
+            });
+            video.addEventListener('canplay',function() {
+              loading.style.display = "none";
+                  video.play();
+            });
+          }else{
+            video.addEventListener('loadeddata', function() {
+              if(video.readyState >= 3) {
+                video.play();
                 loading.style.display = "none";
-                _this.play();
-              }, 1000);
-            }
+              }
+            });
           }
           function stopSlide(e) {
             var event = e || window.event;
@@ -169,6 +168,14 @@ $(function() {
             if(target.id === "videoWrap" || target.id === "cancleVideo"){
                 body.removeChild(v_wrap);
                 body.removeEventListener("click", removeVideo, false);
+            }
+          }
+          //判断是否为ios
+          function isIOS() {
+            var sUserAgent = navigator.userAgent.toLowerCase(),
+              bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            if(bIsIphoneOs) {
+              return true;
             }
           }
        }
