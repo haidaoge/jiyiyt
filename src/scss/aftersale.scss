@@ -137,6 +137,7 @@ header{
   top: 62px;
   left: 0;
   width: 100%;
+  height: 100vh;
   padding: 0 20px;
   background: #fff;
   transition: top .3s cubic-bezier(.19,.65,.51,.93);
@@ -145,6 +146,7 @@ header{
     line-height: 56px;
     font-size: 16px;
     color: #333;
+    border-bottom: 1px solid #e5e5e5;
   }
 }
 .menu-icon{
@@ -226,17 +228,63 @@ footer{
   width: 200px;
 }
 .follow-img{
+  position: relative;
   height: 100%;
     padding-top: 20px;
+    figure{
+      display: inline-block;
+    }
   img{
     margin-right: 10px;
+    cursor: pointer;
   }
+}
+.wechat:hover .ercode{
+  display: block;
+}
+.ercode{
+  display: none;
+    position: absolute;
+    top: -160px;
+    left: -28px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 5px #ccc;
+    img{
+      display: block;
+      margin: 20px;
+    }
+    .tit{
+      display: block;
+      width: 100%;
+      border-radius: 3px 3px 0 0 ;
+      font-size: 14px;
+      line-height: 2;
+      background-color: #eee;
+      color: #666;
+    }
+}
+.ercode::after{
+  content: '';
+  width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #FFF transparent transparent;
+  position: absolute;
+  bottom: -20px;
+  left: 26px;
 }
 .contact{
   width: 291px;
+  line-height: 2;
 }
 
 @media only screen and (max-width: 1200px) {
+header{
+  box-shadow: 0 0 0 #ccc;
+}
 .header-wrap{
   width: 100%;
 }
@@ -250,6 +298,7 @@ footer{
 }
 .menu-icon{
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   position: absolute;
   right: 20px;
@@ -259,7 +308,13 @@ footer{
   height: 62px;
   img{
     display: block;
+    width: 0.506667rem;
+    height: 0.426667rem;
   } 
+  .menu-close{
+    width: 0.506667rem;
+    height: 0.506667rem;
+  }
 }
 .jy-logo{
     width: 60px;
@@ -325,6 +380,13 @@ footer{
 }
 .follow-img {
     padding-top: 5px;
+}
+.ercode{
+  top: -174px;
+  left: -5px;
+}
+.ercode::after{
+  left: 5px;
 }
 .contact{
   width: 100%;

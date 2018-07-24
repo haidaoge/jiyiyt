@@ -7,18 +7,19 @@ $(function() {
         backtop = null;
     // 事件执行
     (function() {
-        if(winW <= 1200){
+        if(winW <= 1200 && isMobile()){
           // 移动端事件管理
           touchEvent();
           layoutMenu();
           mobileVidoHandle();
+          playVideo(true);
         }else{
           // pc端事件管理
           hoverPlayVideo();
+          playVideo(false);
         }
         clickEvent();
         prodcShow();
-        playVideo();
         resizeEvent();
     }());
     //
@@ -95,11 +96,11 @@ $(function() {
     function menuSlide() {
       if(menuisshow){
         $("#menulist").stop().slideUp();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png').removeClass("menu-close");
         menuisshow = false;
       }else{
         $("#menulist").stop().slideDown();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png').addClass("menu-close");
         menuisshow = true;
       }
     }
@@ -108,22 +109,28 @@ $(function() {
       $('#menulist').removeClass('jy-pc-nav').addClass('jy-mob-nav');
     }
    //生成视频播放组件
-    function createVideo(src) {
+    function createVideo(src, poster) {
        if(src){
           var dc = document,
               video = dc.createElement("video");
           video.setAttribute("width", "100%");
           video.setAttribute("height", "100%");
           video.setAttribute("controls", "controls");
-          video.setAttribute("autoplay", "autoplay");
+          if(poster){
+            video.setAttribute("poster", poster);
+          };
           video.setAttribute("src", src);
           var v_wrap = dc.createElement("section"),
               vc = dc.createElement("div"),
+              loading = dc.createElement("div"),
+              loading = dc.createElement("div"),
               cancle = dc.createElement("button");
           cancle.setAttribute("type", "button");
           cancle.setAttribute("id", "cancleVideo");
           cancle.className = "v-cancle";
           cancle.appendChild(dc.createTextNode("×"));
+          loading.className = "v-loading";
+          vc.appendChild(loading);
           vc.appendChild(cancle);
           vc.className = "jy-vc";
           vc.appendChild(video);
@@ -136,6 +143,22 @@ $(function() {
           //添加视频取消事件
           body.addEventListener("click", removeVideo, false);
           v_wrap.addEventListener("touchmove", stopSlide, false);
+          video.addEventListener('loadeddata',function() {
+            loadedVideo(video);
+          },false);
+          video.addEventListener('waiting',function() {
+            loadedVideo(video);
+          }, false);
+          function loadedVideo(_this) {
+            _this.pause();
+            loading.style.display = "block";
+            if(_this.readyState >= 2) {
+              setTimeout(function() {
+                loading.style.display = "none";
+                _this.play();
+              }, 1000);
+            }
+          }
           function stopSlide(e) {
             var event = e || window.event;
             event.preventDefault();
@@ -150,6 +173,21 @@ $(function() {
           }
        }
     }
+    // 判断是否为移动端
+    function isMobile() {
+      var sUserAgent = navigator.userAgent.toLowerCase(),
+        bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
+        bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
+        bIsMidp = sUserAgent.match(/midp/i) == "midp",
+        bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
+        bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
+        bIsAndroid = sUserAgent.match(/android/i) == "android",
+        bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
+        bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+      if(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        return true;
+      }
+    }
     //移动端视频处理
     function mobileVidoHandle() {
       $(".mask").addClass("gridVideo");
@@ -158,15 +196,19 @@ $(function() {
       })
     }
     //点击、触摸播放视频
-    function playVideo() {
-      var source =["./video/001.mp4", "./video/002.mp4", "./video/003.mp4", "./video/003.mp4"];
+    function playVideo(ismobile) {
+      var source =["./video/001.mp4", "./video/002.mp4", "./video/75kmh.mp4", "./video/heelcoke.mp4"],
+        posters =[null, null, "./images/detail/gps_video.jpg", "./images/detail/follow_video.jpg"];
     	$(".gridVideo").on("click", function(){
         var index = $(".gridVideo").index($(this));
-	        createVideo(source[index]);
+	        ismobile ? createVideo(source[index], posters[index]) : createVideo(source[(index+2)], posters[(index+2)]);
     	});
     }
     //鼠标悬浮播放视频
     function hoverPlayVideo() {
+      $(".video-item video").each(function(i, val) {
+        val.setAttribute('autoplay', 'autoplay');
+      })
       $(".mask").on('mouseenter', function() {
         var index = $('.mask').index($(this));
         $(".video-cover-item").eq(index).addClass('video-cover-on').siblings().removeClass('video-cover-on').addClass('video-cover-dis');
@@ -174,7 +216,6 @@ $(function() {
         $(".video-item").removeClass("video-item-on").eq(index).addClass("video-item-on");
         var video = $(".video-item-on video")[0];
         video.currentTime = 0;
-        video.play();
       });
       $(".mask").on('mouseleave', function() {
         var index = $('.mask').index($(this));

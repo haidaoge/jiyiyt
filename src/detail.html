@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <title>稳云网站-单反页面</title>
 <link href="./fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<link href="./css/detail.css" rel="stylesheet" type="text/css" />
+<link href="./css/detail.min.css" rel="stylesheet" type="text/css" />
 <script >
     !function(e,t){function n(){t.body?t.body.style.fontSize=12*o+"px":t.addEventListener("DOMContentLoaded",n)}function d(){var e=i.clientWidth/10;i.style.fontSize=e+"px"}var i=t.documentElement,o=e.devicePixelRatio||1;if(n(),d(),e.addEventListener("resize",d),e.addEventListener("pageshow",function(e){e.persisted&&d()}),o>=2){var a=t.createElement("body"),s=t.createElement("div");s.style.border=".5px solid transparent",a.appendChild(s),i.appendChild(a),1===s.offsetHeight&&i.classList.add("hairlines"),i.removeChild(a)}}(window,document);
 </script>
@@ -17,16 +17,16 @@
         <a href="./index.html"  class="jy-logo"></a>
         <!-- 移动端头部导航菜单按钮 -->
         <div id="menuBtn" class="menu-icon">
-            <img src="images/ic_collection.png" alt="" width="30" height="30">
+            <img src="images/ic_collection.png" alt="">
         </div>
         <nav>
             <ul id="menulist" class="jy-pc-nav clearfix">
                 <li><a href="./index.html">首页</a></li>
-                <li><a class="active" href="./detail.html">单反云台</a></li>
+                <li><a href="./detail.html">单反云台</a></li>
                 <!-- <li><a href="###">手机云台</a></li>
                 <li><a href="###">运动相机</a></li> -->
                 <li><a href="./aftersale.html">售后服务</a></li>
-                <li><a href="###">下载</a></li>
+                <!-- <li><a href="###">下载</a></li> -->
                 <li><a href="./about.html">关于极翼</a></li>
             </ul>
         </nav>
@@ -37,19 +37,19 @@
         <div id="prodcslider" class="prodc-xlview">
             <ul class="big-img-list clearfix">
                 <li class="image-slider">
-                    <img src="./images/detail/product1.png" alt="">
+                    <img src="./images/detail/product1.png" alt="稳云" title="稳云">
                 </li>
                 <li class="image-slider">
-                    <img src="./images/detail/product2.png" alt="">
+                    <img src="./images/detail/product2.png" alt="稳云" title="稳云">
                 </li>
                 <li class="image-slider">
-                    <img src="./images/detail/product3.png" alt="">
+                    <img src="./images/detail/product3.png" alt="稳云" title="稳云">
                 </li>
                 <li class="image-slider">
-                    <img src="./images/detail/product4.png" alt="">
+                    <img src="./images/detail/product4.png" alt="稳云" title="稳云">
                 </li>
                 <li class="image-slider">
-                    <img src="./images/detail/product5.png" alt="">
+                    <img src="./images/detail/product5.png" alt="稳云" title="稳云">
                 </li>
             </ul>
         </div>
@@ -85,7 +85,7 @@
                 <ul class="intro-list">
                     <li>更多APP智能创意模式；</li>
                     <li>支持更多相机参数设置；</li>
-                    <li>75km/h车速下，稳定画面；</li>
+                    <li>75Km/H车速下，稳定画面；</li>
                     <li>3.6Kg超强负载；</li>
                     <li>佳能，索尼相机实时跟焦/变焦；</li>
                     <li>12小时超长时间续航*2；</li>
@@ -166,12 +166,12 @@
             <div class="video-list">
                 <div class="video-item">
                     <div class="video-bg">
-                        <video src="./video/001.mp4" autoplay="autoplay" preload="auto" loop="loop"></video>
+                        <video src="./video/001.mp4" preload="auto" loop="loop"></video>
                     </div>
                 </div>
                 <div class="video-item">
                     <div class="video-bg">
-                        <video src="./video/002.mp4" autoplay="autoplay" preload="auto" loop="loop"></video>
+                        <video src="./video/002.mp4" preload="auto" loop="loop"></video>
                     </div>
                 </div>
             </div>
@@ -181,21 +181,21 @@
 <section class="grid-container">
     <div class="grid-card">
         <div class="grid_image pointer gridVideo grid-pos-right">
-            <img src="./images/detail/gps_video.jpg" alt="">
+            <img src="./images/detail/gps_video.jpg" alt="极翼 75Km/H 极致稳定">
             <i class="fa fa-play play"></i>
         </div>
         <div class="grid-info-wrap grid-pos-left">
             <div class="grid-info">
                 <p class="h1">75Km/H 极致稳定</p>
-                <p>高精度姿态算法和云台控制算法，三核MCU并行控制，极快的响应速度，在75km/h车速行驶情况下，拍摄出稳定画面。</p>
+                <p>高精度姿态算法和云台控制算法，三核MCU并行控制，极快的响应速度，在75Km/H车速行驶情况下，拍摄出稳定画面。</p>
             </div>
         </div>
     </div>
 </section>
-<section id="banner2" class="grid-container gridVideo grid-ban2 grid-ban">
+<section id="banner2" class="grid-container grid-ban2 grid-ban">
     <div class="grid-card">
-        <div class="grid_image pointer">
-            <img src="./images/detail/follow_video.jpg" alt="">
+        <div class="grid_image gridVideo pointer">
+            <img src="./images/detail/follow_video.jpg" alt="极翼 实时跟焦/变焦">
             <i class="fa fa-play play"></i>
         </div>
         <div class="grid-info-wrap">
@@ -213,7 +213,7 @@
             <p>更大尺寸的伺服电机，新一代FOC电机控制算法，高精度位置传感器，实现电机精准控制的同时更大释放电机扭力，承重达3.6Kg, 可兼容全系列微单，单反相机以及各式电影机。</p>
         </div>
         <div class="imgwrap">
-            <img src="./images/detail/load_image.jpg" alt="">
+            <img src="./images/detail/load_image.jpg" alt="极翼 3.6Kg 超强负载">
         </div>
     </div>
 </section>
@@ -229,7 +229,7 @@
 <section class="grid-container bg-odd">
     <div class="grid-card">
         <div class="grid_image pointer gridVideo grid-pos-right">
-            <img src="./images/detail/adaptive_image.jpg" alt="">
+            <img src="./images/detail/adaptive_image.jpg" alt="极翼 相机支持功能全面">
         </div>
         <div class="grid-info-wrap grid-pos-left">
             <div class="grid-info">
@@ -262,7 +262,7 @@
             <ul class="icons-row">
                 <li class="icon-item">
                     <img class="icon" src="./images/detail/velocity_icon@2x.png" alt="">
-                    <p class="icon-info">75km/s</p>
+                    <p class="icon-info">75Km/H</p>
                 </li>
                 <li class="icon-item">
                     <img class="icon" src="./images/detail/bearing_icon@2x.png" alt="">
@@ -329,7 +329,7 @@
                     <p class="icon-info">倒挂模式</p>
                 </li>
                 <li class="icon-item">
-                    <img class="icon" src="./images/detail/overhead_hook_icon@2x.png" alt="">
+                    <img class="icon" src="./images/detail/no_load_icon@2x.png" alt="">
                     <p class="icon-info">空载保护</p>
                 </li>
             </ul>
@@ -409,16 +409,24 @@
             <li class="divider"></li> -->
             <li><a href="./aftersale.html">售后服务</a></li>
               <li class="divider">|</li>
-            <li><a href="">下载</a></li>
-              <li class="divider">|</li>
+            <!-- <li><a href="">下载</a></li>
+              <li class="divider">|</li> -->
             <li><a href="./about.html">关于极翼</a></li>
             <li class="copyright" style="font-family:arial;">Copyright &copy; 2018 JIYI 极翼 版权所有</li> 
         </ul>
         <ul class="follow clearfix">
             <li>关注我们</li>
             <li class="follow-img">
-                <img src="./images/wechat_iocn.png" width="24" height="20" alt="">
-                <img src="./images/qq_iocn.png" width="20" height="20" alt="">
+                <figure class="wechat">
+                  <img src="./images/wechat_iocn.png" width="24" height="20" alt="wechat" title="wechat">
+                  <div class="ercode">
+                    <span class="tit">联系客服</span>
+                    <img src="./images/qr.png" width="100" height="100" alt="二维码">
+                  </div>
+                </figure>
+                <figure>
+                  <img src="./images/qq_iocn.png" width="20" height="20" alt="qq" title="qq">
+                </figure>
             </li>
         </ul>
         <ul class="contact clearfix">
@@ -429,6 +437,6 @@
 </footer>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/hammer.js"></script>
-<script src="./js/detail.js"></script>
+<script src="./js/detail.min.js"></script>
 </body>
 </html>

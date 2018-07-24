@@ -89,6 +89,10 @@ header a {
   color: #010101;
 }
 
+section {
+  overflow: hidden;
+}
+
 .header-wrap {
   z-index: 900;
   display: flex;
@@ -142,6 +146,7 @@ header a {
   top: 62px;
   left: 0;
   width: 100%;
+  height: 100vh;
   padding: 0 20px;
   background: #fff;
   transition: top 0.3s cubic-bezier(0.19, 0.65, 0.51, 0.93);
@@ -151,6 +156,7 @@ header a {
   line-height: 56px;
   font-size: 16px;
   color: #333;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .menu-icon {
@@ -304,7 +310,10 @@ header a {
   transition: all 0.3s cubic-bezier(0.19, 0.65, 0.51, 0.93);
 }
 .jy-product .intro .arr-bottom {
-  transform: rotate(90deg);
+  transform: rotate(180deg);
+}
+.jy-product .intro:last-child {
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .grid-card {
@@ -387,7 +396,7 @@ header a {
   width: 1181px;
   margin: 54px auto 0;
   width: 1400px;
-  background-color: rgba(123, 124, 125, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
   height: 520px;
 }
 
@@ -450,7 +459,7 @@ header a {
 }
 
 .mask-list:hover .mask-item {
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(200, 200, 200, 0.3);
 }
 .mask-list:hover .mask-item .mask {
   background: rgba(0, 0, 0, 0.3);
@@ -571,6 +580,7 @@ header a {
 .grid-pos-left {
   position: absolute;
   top: 0;
+  left: 0;
   height: 100%;
 }
 
@@ -656,6 +666,19 @@ header a {
 }
 .jy-vc .v-cancle:hover {
   opacity: 1;
+}
+
+.v-loading {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 100%;
+  background: #000;
+  text-align: center;
+  background: url(./../images/loading.gif) no-repeat 50% 50% #000;
+  background-size: 46px 46px;
 }
 
 /* 视频样式end */
@@ -761,18 +784,68 @@ footer {
 }
 
 .follow-img {
+  position: relative;
   height: 100%;
   padding-top: 20px;
 }
+.follow-img figure {
+  display: inline-block;
+}
 .follow-img img {
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.wechat:hover .ercode {
+  display: block;
+}
+
+.ercode {
+  display: none;
+  position: absolute;
+  top: -160px;
+  left: -28px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #ccc;
+}
+.ercode img {
+  display: block;
+  margin: 20px;
+}
+.ercode .tit {
+  display: block;
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  font-size: 14px;
+  line-height: 2;
+  background-color: #eee;
+  color: #666;
+}
+
+.ercode::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #FFF transparent transparent;
+  position: absolute;
+  bottom: -20px;
+  left: 26px;
 }
 
 .contact {
   width: 291px;
+  line-height: 2;
 }
 
 @media only screen and (max-width: 1200px) {
+  header {
+    box-shadow: 0 0 0 #ccc;
+  }
+
   .header-wrap {
     width: 100%;
   }
@@ -790,6 +863,7 @@ footer {
   .menu-icon {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     position: absolute;
     right: 20px;
     top: 50%;
@@ -799,6 +873,12 @@ footer {
   }
   .menu-icon img {
     display: block;
+    width: 0.506667rem;
+    height: 0.426667rem;
+  }
+  .menu-icon .menu-close {
+    width: 0.506667rem;
+    height: 0.506667rem;
   }
 
   .jy-logo {
@@ -866,6 +946,7 @@ footer {
   .grid-ban1 {
     margin-top: 1.653333rem;
     padding-bottom: 1.466667rem;
+    background-image: url(./../images/detail/mobile/app_bg.jpg);
   }
 
   .grid-ban2 {
@@ -921,7 +1002,6 @@ footer {
   .display-box {
     width: 8.96rem;
     height: 8.533333rem;
-    background-color: rgba(123, 124, 125, 0);
   }
 
   .mask-list .mask-item {
@@ -935,8 +1015,15 @@ footer {
   .mask-list .mask-item .text {
     top: 70%;
   }
+  .mask-list .mask-item .text .title {
+    font-size: 15px !important;
+  }
   .mask-list .mask-item .text .ban-icon {
     display: block;
+  }
+
+  .mask-list:hover .mask-item {
+    border-right: none;
   }
 
   .video-cover-list, .video-list {
@@ -1042,6 +1129,15 @@ footer {
 
   .follow-img {
     padding-top: 5px;
+  }
+
+  .ercode {
+    top: -174px;
+    left: -5px;
+  }
+
+  .ercode::after {
+    left: 5px;
   }
 
   .contact {

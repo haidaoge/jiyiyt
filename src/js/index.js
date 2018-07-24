@@ -13,6 +13,7 @@ $(function() {
         addScrollEvent();
         carousel();
         playVideo();
+        langSlide();
         if(winW <= 1200){
           // 移动端事件管理
           touchEvent();
@@ -65,7 +66,19 @@ $(function() {
       });
     }
 
-    
+    //中英文下拉
+    function langSlide() {
+      var key = false;
+      $(".lang-on").on("click", function() {
+        if(key){
+          $("#jyLang").slideUp();
+          key = false;
+        }else{
+           $("#jyLang").slideDown();
+           key = true;
+         }
+      })
+    }
     
 
     // 客户评论slider
@@ -96,11 +109,15 @@ $(function() {
           video.setAttribute("src", src);
           var v_wrap = dc.createElement("section"),
               vc = dc.createElement("div"),
+              loading = dc.createElement("div"),
+              loading = dc.createElement("div"),
               cancle = dc.createElement("button");
           cancle.setAttribute("type", "button");
           cancle.setAttribute("id", "cancleVideo");
           cancle.className = "v-cancle";
           cancle.appendChild(dc.createTextNode("×"));
+          loading.className = "v-loading";
+          vc.appendChild(loading);
           vc.appendChild(cancle);
           vc.className = "jy-vc";
           vc.appendChild(video);
@@ -113,6 +130,13 @@ $(function() {
           //添加视频取消事件
           body.addEventListener("click", removeVideo, false);
           v_wrap.addEventListener("touchmove", stopSlide, false);
+          video.addEventListener('loadeddata', function() {
+            if(video.readyState >= 3) {
+              video.play();
+              loading.style.display = "none";
+            }
+
+          });
           function stopSlide(e) {
             var event = e || window.event;
             event.preventDefault();
@@ -129,7 +153,7 @@ $(function() {
     }
     //点击、触摸播放视频
     function playVideo() {
-      var source =["https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4","https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4","https://zhiyundata.oss-cn-shenzhen.aliyuncs.com/zyplay/share/84896/37464/2018-04-05-14:18:42.mp4"];
+      var source =["./video/sport.mp4", "./video/scenery.mp4", "./video/play.mp4"];
       $("#gridVideo").on("click", "li", function(){
         var index = $(this).index();
         if(winW <= 1200){
@@ -207,11 +231,11 @@ $(function() {
     function menuSlide() {
       if(menuisshow){
         $("#menulist").stop().slideUp();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png').removeClass("menu-close");
         menuisshow = false;
       }else{
         $("#menulist").stop().slideDown();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png').addClass("menu-close");
         menuisshow = true;
       }
     }

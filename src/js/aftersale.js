@@ -54,11 +54,11 @@ $(function() {
     function menuSlide() {
       if(menuisshow){
         $("#menulist").stop().slideUp();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_collection.png').removeClass("menu-close");
         menuisshow = false;
       }else{
         $("#menulist").stop().slideDown();
-        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png');
+        $('#menuBtn>img').eq(0).attr('src', 'images/ic_shut_down.png').addClass("menu-close");
         menuisshow = true;
       }
     }
