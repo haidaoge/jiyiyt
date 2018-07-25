@@ -1025,6 +1025,13 @@ footer {
   .mask-list:hover .mask-item {
     border-right: none;
   }
+  .mask-list:hover .mask-item .mask {
+    background: rgba(0, 0, 0, 0);
+  }
+  .mask-list:hover .mask-item .text {
+    opacity: 1;
+    z-index: 10;
+  }
 
   .video-cover-list, .video-list {
     flex-wrap: wrap;

@@ -921,6 +921,13 @@ h1,h2{
 }
 .mask-list:hover .mask-item{
   border-right: none;
+  .mask {
+    background: rgba(0,0,0,0);
+  }
+  .text{
+    opacity: 1;
+    z-index: 10;
+  }
 }
 .video-cover-list, .video-list {
   flex-wrap: wrap;

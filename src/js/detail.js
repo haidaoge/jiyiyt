@@ -9,39 +9,51 @@ $(function() {
     (function() {
         if(winW <= 1200 && isMobile()){
           // 移动端事件管理
+          stopTouchendPropagationAfterScroll();
           touchEvent();
           layoutMenu();
           mobileVidoHandle();
           playVideo(true);
+          detailEvent(true);
+          prodcShow(true);
         }else{
           // pc端事件管理
           hoverPlayVideo();
           playVideo(false);
+          detailEvent(false);
+          prodcShow(false);
         }
-        clickEvent();
-        prodcShow();
         resizeEvent();
     }());
-    //
     function resizeEvent(){
       $(window).on("resize", function(){
         winH = $(window).height();
         winW = $(window).width();
       })
     }
-    //点击事件
-    function clickEvent() {
-        //产品详情
-        $(".intro").on("click", function() {
-        	var index = $(this).index();
-        	if($(".arrimg").eq(index).hasClass('arr-bottom')){
-	          $(".intro-list").eq(index).stop().slideUp();
-	          $(".arrimg").eq(index).removeClass('arr-bottom');
-        	}else{
-        	  $(".intro-list").eq(index).stop().slideDown();
-	          $(".arrimg").eq(index).addClass('arr-bottom');
-        	}
-        });
+    //详情点击/触摸事件
+    function detailEvent(ismobile) {
+        if(ismobile) {
+          $(".intro").on("touchend", function() {
+            var index = $(this).index();
+            detailSlide(index);
+          });
+        }else{
+          $(".intro").on("click", function() {
+          	var index = $(this).index();
+            detailSlide(index);
+          });
+        }
+    }
+    //详情执行体
+    function detailSlide(index) {
+      if($(".arrimg").eq(index).hasClass('arr-bottom')){
+        $(".intro-list").eq(index).stop().slideUp();
+        $(".arrimg").eq(index).removeClass('arr-bottom');
+      }else{
+        $(".intro-list").eq(index).stop().slideDown();
+        $(".arrimg").eq(index).addClass('arr-bottom');
+      }
     }
     //移动端事件操作
     function touchEvent() {
@@ -65,7 +77,7 @@ $(function() {
         });
     };
     // 产品图片展示，轮播
-    function prodcShow() {
+    function prodcShow(ismobile) {
       var index = 0,
           total = $(".image-slider").length,
           width = $(".image-slider").width(),
@@ -84,13 +96,21 @@ $(function() {
       }
       $(".next").on("click", next);
       $(".prev").on("click", prev);
-	  slide.on('swiperight', prev);
-      slide.on('swipeleft', next);
-      $(".product_thumb").on("click", function() {
-        var sub = $(this).index();
-        index = sub;
-        prodcAction(width, index);
-      });
+      if(ismobile) {
+  	    slide.on('swiperight', prev);
+        slide.on('swipeleft', next);
+        $(".product_thumb").on("touchend", function() {
+          var sub = $(this).index();
+          index = sub;
+          prodcAction(width, index);
+        });
+      }else{
+        $(".product_thumb").on("click", function() {
+          var sub = $(this).index();
+          index = sub;
+          prodcAction(width, index);
+        });
+      }
     }
     //菜单下拉处理
     function menuSlide() {
@@ -195,6 +215,24 @@ $(function() {
         return true;
       }
     }
+    //滑动阻止触发触摸事件(touchend)
+    function stopTouchendPropagationAfterScroll(){
+        var locked = false;
+        window.addEventListener('touchmove', function(ev){
+          var event = ev || window.event,
+             target = event.target || event.srcElement;
+             el = target.parentElement;
+            if(el.getAttribute("data-slide") == "1" || target.getAttribute("data-slide") == "1") {
+              return false;
+            }
+            locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+        }, true);
+        function stopTouchendPropagation(ev){
+            ev.stopPropagation();
+            window.removeEventListener('touchend', stopTouchendPropagation, true);
+            locked = false;
+        }
+    }
     //移动端视频处理
     function mobileVidoHandle() {
       $(".mask").addClass("gridVideo");
@@ -206,13 +244,21 @@ $(function() {
     function playVideo(ismobile) {
       var source =["./video/001.mp4", "./video/002.mp4", "./video/75kmh.mp4", "./video/heelcoke.mp4"],
         posters =[null, null, "./images/detail/gps_video.jpg", "./images/detail/follow_video.jpg"];
-    	$(".gridVideo").on("click", function(){
-        var index = $(".gridVideo").index($(this));
-	        ismobile ? createVideo(source[index], posters[index]) : createVideo(source[(index+2)], posters[(index+2)]);
-    	});
+      if(ismobile) {
+        $(".gridVideo").on("touchend", function(){
+          var index = $(".gridVideo").index($(this));
+          createVideo(source[index], posters[index]);
+        });
+      }else{
+        $(".gridVideo").on("click", function(){
+          var index = $(".gridVideo").index($(this));
+          createVideo(source[(index+2)], posters[(index+2)]);
+        });
+      }
     }
     //鼠标悬浮播放视频
     function hoverPlayVideo() {
+      alert(12)
       $(".video-item video").each(function(i, val) {
         val.setAttribute('autoplay', 'autoplay');
       })

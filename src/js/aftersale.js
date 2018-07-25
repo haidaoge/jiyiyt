@@ -11,6 +11,7 @@ $(function() {
     (function() {
         if(winW <= 1200){
           // 移动端事件管理
+          stopTouchendPropagationAfterScroll();
           touchEvent();
           layoutMenu();
         }
@@ -78,7 +79,18 @@ $(function() {
    	  	}
    	  })
    }
-
+  //滑动阻止触发触摸事件(touchend)
+    function stopTouchendPropagationAfterScroll(){
+      var locked = false;
+      window.addEventListener('touchmove', function(ev){
+          locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+      }, true);
+      function stopTouchendPropagation(ev){
+          ev.stopPropagation();
+          window.removeEventListener('touchend', stopTouchendPropagation, true);
+          locked = false;
+      }
+    }
 
 
 })

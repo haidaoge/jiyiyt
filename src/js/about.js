@@ -11,6 +11,7 @@ $(function() {
     (function() {
         if(winW <= 1200){
           // 移动端事件管理
+          stopTouchendPropagationAfterScroll();
           touchEvent();
           layoutMenu();
         }
@@ -79,17 +80,18 @@ $(function() {
    	  	}
    	  })
     }
-   // // function (){}
-   // // var 
-   // $(".dateline").each(function(i,val){
-
-   //   // val.style.height = val.parentElement.style.height;
-   //   console.log(val, $(".dateline").eq(i).height())
-   // })
-   // for(var i=0, len = $(".dateline").length; i<)
-   // // $(".dateline").height(function() {
-   // //   return $(".dateline").parent().height();
-   // // })
+   //滑动阻止触发触摸事件(touchend)
+    function stopTouchendPropagationAfterScroll(){
+      var locked = false;
+      window.addEventListener('touchmove', function(ev){
+          locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+      }, true);
+      function stopTouchendPropagation(ev){
+          ev.stopPropagation();
+          window.removeEventListener('touchend', stopTouchendPropagation, true);
+          locked = false;
+      }
+    }
 
 
 })
