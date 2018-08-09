@@ -38,10 +38,13 @@ em {
 }
 
 h1, h2 {
+  font-weight: normal;
+}
+
+h2 {
   text-align: center;
   font-size: 28px;
   line-height: 156px;
-  font-weight: normal;
 }
 
 .tac {
@@ -894,7 +897,7 @@ footer {
     padding: 0 20px;
   }
 
-  h1, h2 {
+  h1, h2, h3 {
     font-size: 18px;
     line-height: 56px;
   }

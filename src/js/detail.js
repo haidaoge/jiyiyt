@@ -258,7 +258,6 @@ $(function() {
     }
     //鼠标悬浮播放视频
     function hoverPlayVideo() {
-      alert(12)
       $(".video-item video").each(function(i, val) {
         val.setAttribute('autoplay', 'autoplay');
       })
